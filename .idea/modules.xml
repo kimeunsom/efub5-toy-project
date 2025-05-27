@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/efub5-toy-project.iml" filepath="$PROJECT_DIR$/.idea/efub5-toy-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/efubtoy.main.iml" filepath="$PROJECT_DIR$/.idea/modules/efubtoy.main.iml" />
     </modules>
   </component>
 </project>
