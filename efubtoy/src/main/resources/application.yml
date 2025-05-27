@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://efub-blog.c3aeqcg2qfm0.ap-northeast-2.rds.amazonaws.com:3306/efubtoy?createDatabaseIfNotExist=true&characterEncoding=UTF-8&characterSetResults=UTF-8
-    username: efubToy
-    password: somi1036
+    url: jdbc:mysql://efubtoy.c3aeqcg2qfm0.ap-northeast-2.rds.amazonaws.com:3306/efubtoy?createDatabaseIfNotExist=true&characterEncoding=UTF-8&characterSetResults=UTF-8
+    username: admin
+    password: efub1234
   jpa:
     hibernate:
       ddl-auto: update
