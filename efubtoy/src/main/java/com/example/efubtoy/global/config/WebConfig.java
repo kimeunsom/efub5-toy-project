@@ -7,10 +7,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Override
-    public void configureCors(CorsRegistry registry) {
+    @Override // 이제 이 @Override는 WebMvcConfigurer의 addCorsMappings를 정확히 오버라이드합니다.
+    public void addCorsMappings(CorsRegistry registry) { // ⭐ configureCors -> addCorsMappings 로 변경
         registry.addMapping("/**")
-                // ⭐⭐ 기존 http://localhost:5173 에 더하여 배포된 백엔드 도메인을 추가합니다. ⭐⭐
                 .allowedOrigins("http://localhost:5173", "https://busanlottegiants.p-e.kr")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
