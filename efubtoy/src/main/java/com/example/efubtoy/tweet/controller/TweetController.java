@@ -42,6 +42,4 @@ public class TweetController {
         // 성공적인 삭제는 204 No Content로 응답
         return ResponseEntity.noContent().build();
     }
-
-    // TODO: 필요하다면 모든 트윗 조회, 트윗 수정 등의 엔드포인트 추가 가능
 }
