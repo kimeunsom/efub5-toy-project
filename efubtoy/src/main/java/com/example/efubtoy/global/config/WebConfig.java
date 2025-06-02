@@ -10,7 +10,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override // 이제 이 @Override는 WebMvcConfigurer의 addCorsMappings를 정확히 오버라이드합니다.
     public void addCorsMappings(CorsRegistry registry) { // ⭐ configureCors -> addCorsMappings 로 변경
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:51473", "https://busanlottegiants.p-e.kr")
+                .allowedOrigins("http://localhost:5173", "https://busanlottegiants.p-e.kr")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true)
