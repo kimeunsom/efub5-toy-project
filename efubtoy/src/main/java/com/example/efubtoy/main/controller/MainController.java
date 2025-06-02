@@ -24,7 +24,7 @@ public class MainController { // 또는 TweetController
     }
 
     // 메인 화면에 보여줄 모든 트윗을 가져오는 API
-    @GetMapping("/tweets") // 당신이 사용하는 엔드포인트 경로를 사용하세요.
+    @GetMapping
     public ResponseEntity<CommonResponse<TweetListResponse>> getTweetsForMainScreen() {
         // ⭐ MainService에서 getTweetsForMainFeed() 메서드를 호출합니다.
         List<MainTweetResponse> mainTweetResponses = mainService.getTweetsForMainFeed();
