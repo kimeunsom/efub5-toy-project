@@ -21,7 +21,7 @@ public class MainService {
     @Transactional(readOnly = true) // 읽기 전용 트랜잭션 설정
     public List<MainTweetResponse> getTweetsForMainFeed() {
         // MainRepository를 통해 최신순으로 정렬된 트윗 엔티티 목록 조회
-        List<Tweet> tweets = mainRepository.findAllTweetsOrderByCreatedAtDesc();
+        List<Tweet> tweets = mainRepository.findAllByOrderByCreatedAtDesc();
 
         // 조회된 트윗 엔티티 목록을 MainTweetResponse DTO 목록으로 변환
         return tweets.stream()
