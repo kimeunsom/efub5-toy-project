@@ -1,8 +1,10 @@
 package com.example.efubtoy.main.controller;
 
-import com.example.efubtoy.main.response.MainTweetResponse;
-import com.example.efubtoy.main.service.MainService;
-import lombok.RequiredArgsConstructor;
+import com.example.efubtoy.main.service.MainService; // ⭐ MainService 임포트
+import com.example.efubtoy.main.response.MainTweetResponse; // ⭐ MainTweetResponse 임포트
+import com.example.efubtoy.global.response.CommonResponse; // CommonResponse 임포트
+import com.example.efubtoy.tweet.dto.response.TweetListResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,17 +13,28 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
-@RequestMapping("/main") // URI: /main
-public class MainController {
+@RequestMapping("/main") // 당신이 사용하는 매핑 경로를 사용하세요.
+public class MainController { // 또는 TweetController
 
     private final MainService mainService;
 
-    // 메인 화면 트윗 조회
-    // URI: GET /main
-    @GetMapping
-    public ResponseEntity<List<MainTweetResponse>> getTweetsOnMain() {
-        List<MainTweetResponse> tweets = mainService.getTweetsForMainFeed();
-        return ResponseEntity.ok(tweets); // HTTP 200 OK와 함께 트윗 목록 반환
+    @Autowired
+    public MainController(MainService mainService) {
+        this.mainService = mainService;
+    }
+
+    // 메인 화면에 보여줄 모든 트윗을 가져오는 API
+    @GetMapping("/tweets") // 당신이 사용하는 엔드포인트 경로를 사용하세요.
+    public ResponseEntity<CommonResponse<TweetListResponse>> getTweetsForMainScreen() {
+        // ⭐ MainService에서 getTweetsForMainFeed() 메서드를 호출합니다.
+        List<MainTweetResponse> mainTweetResponses = mainService.getTweetsForMainFeed();
+
+        // TweetListResponse 객체를 생성하여 MainTweetResponse 목록을 "tweets" 필드 안에 넣습니다.
+        TweetListResponse tweetListData = new TweetListResponse(mainTweetResponses);
+
+        // CommonResponse.success() 메서드를 사용하여 전체 응답 구조를 만듭니다.
+        CommonResponse<TweetListResponse> response = CommonResponse.success(tweetListData);
+
+        return ResponseEntity.ok(response);
     }
 }
