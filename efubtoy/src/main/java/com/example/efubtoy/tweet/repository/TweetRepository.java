@@ -16,6 +16,5 @@ public interface TweetRepository extends JpaRepository<Tweet, Long> {
     // 특정 User가 작성한 트윗을 최신순으로 정렬
     List<Tweet> findByWriterOrderByCreatedAtDesc(User writer);
 
-    // 이외 추가 메소드ㅡ.. 특정 트윗 ID를 가진 답글 조회
-    // List<Tweet> findByParentIdOrderByCreatedAtDesc(Long parentId);
+
 }
